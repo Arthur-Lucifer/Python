@@ -1,0 +1,35 @@
+# f = open("./Py7-1.txt", "w", encoding="utf-8")
+# seq = ["秦时明月汉时关，\n","秦时明月汉时关。\n","但使龙城飞将在，\n","不教胡马度阴山。\n"]
+# f.writelines(seq)
+# f.close()
+
+# f = open("Py7-1.txt", "r+", encoding="UTF-8")
+# fline=f.readlines()
+# fline[1]="万里长征人未还。\n"
+# f=open("Py7-1.txt", "w+", encoding="UTF-8")
+# f.writelines(fline)
+# f.close()
+
+import xlwt
+
+x = xlwt.Workbook()
+sht = x.add_sheet('ex06')
+sht.write(0, 0, "S09")
+sht.write(0, 1, "女")
+sht.write(0, 2, "89.2")
+sht.write(0, 3, "88.4")
+sht.write(0, 4, "86")
+sht.write(0, 5, "87.9")
+sht.write(1, 0, "S10")
+sht.write(1, 1, "女")
+sht.write(1, 2, "90.5")
+sht.write(1, 3, "86.3")
+sht.write(1, 4, "87")
+sht.write(1, 5, "87.9")
+sht.write(2, 0, "S11")
+sht.write(2, 1, "男")
+sht.write(2, 2, "88.7")
+sht.write(2, 3, "89.4")
+sht.write(2, 4, "89")
+sht.write(2, 5, "89.0")
+x.save('ex06.xls')
