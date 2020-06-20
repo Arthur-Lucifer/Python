@@ -32,7 +32,6 @@ class Application(tk.Tk):
         frame.tkraise() # 切换，提升当前 tk.Frame z轴顺序（使可见）！！此语句是本程序的点睛之处
 
 
-
 #主页面
 class PageZero(tk.Frame):
     def __init__(self, parent, root):
@@ -91,6 +90,7 @@ class PageOne(tk.Frame):
             composition=str(e4.get())
             singing=str(e5.get())
             songdata.write(name+' '+track+' '+lyrics+' '+composition + ' ' +singing+ '\n')
+        songdata.close()
 
 #删除歌曲信息
 class PageTwo(tk.Frame):
@@ -108,14 +108,15 @@ class PageTwo(tk.Frame):
         Button(self, text="确定删除",width=8,font=ft4,command=self.del1).pack(pady=20)
         Button(self, text="返回首页",width=8,font=ft4,command=lambda: root.show_frame(PageZero)).pack()
     def del1(self):
-        num2=str(e6.get())
+        de=str(e6.get())
         with open('songdata.txt','r') as f:
             lines=f.readlines()
             with open('songdata.txt','w') as f_w:
                 for line in lines:
-                    if num2 in line:
+                    if de in line:
                         continue
                     f_w.write(line)
+            f_w.close()
 
 
 #修改歌曲信息
@@ -144,11 +145,11 @@ class PageThree(tk.Frame):
         Button(self, text="确定修改",width=8,font=ft4,command=self.modify).pack(pady=20)
         Button(self, text="返回首页",width=8,font=ft4,command=lambda: root.show_frame(PageZero)).pack()
     def modify(self):
-        newname=str(e7.get())
-        newtrack=str(e8.get())
-        newlyrics=str(e9.get())
-        newcomposition=str(e10.get())
-        newsinging=str(e11.get())
+        newname=str(self.e7.get())
+        newtrack=str(self.e8.get())
+        newlyrics=str(self.e9.get())
+        newcomposition=str(self.e10.get())
+        newsinging=str(self.e11.get())
 
 
         with open('songdata.txt','r') as r_w:
@@ -158,7 +159,8 @@ class PageThree(tk.Frame):
                     if newname in line1:
                         rr_w.write(newname+' '+newtrack+' '+newlyrics+' '+newcomposition + ' ' +newsinging+ '\n')
                         continue
-                        rr_w.write(line1)
+                    rr_w.write(line1)
+            rr_w.close()
 
 #查询歌曲
 class PageFour(tk.Frame):
